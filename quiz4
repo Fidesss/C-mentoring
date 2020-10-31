@@ -1,0 +1,54 @@
+#include<stdio.h>
+
+int level = 1;
+int HP = 500;
+int ATK = 50;
+
+void level_Up();
+void print_Status();
+
+int main()
+{
+	while (1)
+	{
+		char put;
+		print_Status();
+		printf("행동을 입력하세요(a/b/c/x/l) :  \n");
+		scanf_s("%c", &put);
+		getchar();
+		if (put == 'a')
+		{
+			printf("파워슬래쉬!\n");
+			printf("%d의 데미지 \n", ATK + 10);
+		}
+		else if (put == 'b')
+		{
+			printf("바디 태클\n");
+			printf("%d 의 데미지\n", ATK + 13);
+		}
+		else if (put == 'c')
+		{
+			printf("단단해지기\n");
+			printf("일시적으로 %d 초만큼 무적이됩니다.\n", 3);
+		}
+		else if (put == 'l')
+		{
+			level_Up();
+		}
+		else if (put == 'x')
+			break;
+	}
+	return 0;
+}
+
+void level_Up() {
+	level += 1;
+	HP *= 1.2;
+	ATK += 10;
+}
+
+void print_Status() {
+	printf("레벨 : %d\n", level);
+	printf("체력 : %d\n", HP);
+	printf("공격력 : %d\n", ATK);
+}
